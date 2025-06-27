@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./App.css";
+import { Loading } from "./components/loading";
+import { useLoading } from "./components/loading/context";
 import Clients from "./components/sections/clients";
 import Products from "./components/sections/products";
 import Sidebar from "./components/sidebar";
@@ -38,13 +39,10 @@ function MainContent() {
 }
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const { loading } = useLoading();
 
   if (loading) return (
-    <div className="size-full h-lvh flex justify-center items-center flex-col">
-      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-red-300"></div>
-      <p className="mt-3 text-gray-500">Cargando</p>
-    </div>
+    <Loading />
   )
 
   return (
