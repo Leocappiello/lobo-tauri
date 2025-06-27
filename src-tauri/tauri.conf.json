@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "lobo",
-        "width": 800,
-        "height": 600
+        "width": 1260,
+        "height": 768
       }
     ],
     "security": {

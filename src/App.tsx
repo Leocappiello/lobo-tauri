@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Clients from "./components/sections/clients";
 import Products from "./components/sections/products";
@@ -15,7 +16,11 @@ function MainContent() {
     { name: 'Liam Foster', email: 'liam.foster@example.com', phone: '(555) 369-1212', status: 'Inactive' },
   ];
 
-  if (!activeSection) return <p>Selecciona una sección del menú</p>;
+  if (!activeSection) return (
+    <div className="size-full flex justify-center items-center">
+      <p className="text-red-300">Selecciona una sección del menú</p>
+    </div>
+  );
 
   return (
     <>
@@ -33,6 +38,15 @@ function MainContent() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  if (loading) return (
+    <div className="size-full h-lvh flex justify-center items-center flex-col">
+      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-red-300"></div>
+      <p className="mt-3 text-gray-500">Cargando</p>
+    </div>
+  )
+
   return (
     <Sidebar>
       <MainContent />
